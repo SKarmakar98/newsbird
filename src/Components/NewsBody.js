@@ -5,7 +5,7 @@ import NewsCrd from "./NewsCrd";
 export default class NewsBody extends Component {
   constructor() {
     super();
-    this.state = { _articles: [] };
+    this.state = { articles: [] };
   }
   async componentDidMount() {
     let url =
@@ -13,12 +13,12 @@ export default class NewsBody extends Component {
     let jsonData = await fetch(url);
     let jsonArray = await jsonData.json();
     console.log(jsonArray);
-    this.setState({ _articles: jsonArray.articles });
+    this.setState({ articles: jsonArray.articles });
   }
   render() {
     return (
       <div className="card-group">
-          {this.state._articles.map((element, index) => (
+          {this.state.articles.map((element) => (
             <NewsCrd
               url={element.url}
               description={element.description}
